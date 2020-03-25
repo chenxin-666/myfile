@@ -150,3 +150,35 @@ ci2,shu2=zong[0],zong[1]
 ci3=",".join(ci2)
 L1 = T.Label(win, text="关键词:"+ci3, bg='white', font=('Arial', 12), width=60, height=2)
 L1.pack()
+
+def hua():
+    global ci2,shu2
+    fig,ax=pt.subplots()
+    rects=ax.bar(ci2,shu2)
+    win3=T.Tk()
+    
+    canvas = FigureCanvasTkAgg(fig, master=win3)
+    canvas.get_tk_widget().pack()
+    win3.mainloop()
+b5=T.Button(win,text='查看关键词柱状图',width=20,height=1,command=hua)
+b5.pack()
+
+def gaoliang():
+    b41=T.simpledialog.askstring(u'提示',u'请输入需要高亮的起始位置')
+    b42=T.simpledialog.askstring(u'提示',u'请输入需要高亮的末端位置')
+    liang=zhuanhua()[int(b41):int(b42)]
+    win2=T.Tk()
+    t1=T.Text(win2,width=100,height=32,fg='blue')
+    t1.insert('end',liang)
+    t1.pack()
+b8=T.Button(win,text='高亮指定文本',width=20,height=1,command=gaoliang).pack()
+
+caidan=T.Menu(win)
+cai=T.Menu(caidan,tearoff=0)  
+caidan.add_cascade(label='工具栏', menu=cai)
+cai.add_command(label='替换',command=tihuan)
+cai.add_command(label='删除',command=shanchu)
+cai.add_command(label='高亮显示',command=gaoliang)
+win['menu']=caidan
+
+win.mainloop()
