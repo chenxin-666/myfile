@@ -83,3 +83,11 @@ def chaci():
     c=zhuanhua().count(str(b3))
     T.messagebox.showinfo(u'查询结果',u'查询单词出现次数为：'+str(c))
 b4=T.Button(win,text=u'查询某个单词出现次数',command=chaci,width=20,height=1).pack()
+
+def tihuan():
+     b31=T.simpledialog.askstring(u'提示',u'请输入用于替换的单词')
+     b32= b3=T.simpledialog.askstring(u'提示',u'请输入被替换的单词')
+     weizhi=l1.index(str(b32))
+     l1[weizhi]=str(b31)
+     T.messagebox.showinfo(u'提示',u'替换成功')
+b6=T.Button(win,text=u'单词替换',command=tihuan,width=20,height=1).pack()
