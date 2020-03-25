@@ -77,3 +77,9 @@ def cipin():
     T.messagebox.showinfo(title='词频', message=ci) 
 b2=T.Button(win,text='查看词频',width=20,height=1,command=cipin)
 b2.pack()
+
+def chaci():
+    b3=T.simpledialog.askstring(u'提示',u'请输入想查询的单词')
+    c=zhuanhua().count(str(b3))
+    T.messagebox.showinfo(u'查询结果',u'查询单词出现次数为：'+str(c))
+b4=T.Button(win,text=u'查询某个单词出现次数',command=chaci,width=20,height=1).pack()
