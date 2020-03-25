@@ -97,3 +97,56 @@ def shanchu():
     l1.remove(str(b33))
     T.messagebox.showinfo(u'提示',u'删除成功')
 b7=T.Button(win,text=u'删除单词',command=shanchu,width=20,height=1).pack()
+
+def keyw():
+    f1=open(r"C:\Users\lenovo\Desktop\停用词表.txt",'r')
+    l2=f1.read()
+    l22=list(l2.split())
+    for j in l22:
+        if j=="1":
+            l22.remove(j)
+    l222=""
+    for i in l22:
+        l222+=i.lower()+" "
+    l3= list(l222.split())
+    f3=open(r"C:\Users\lenovo\Desktop\单词文章.txt",'r')
+    ll=f3.read()
+    lll=list(ll.split())
+    llll=""
+    for i in lll:
+        llll+=i.lower()+" "
+    l4=list(llll.split())
+    for i in l4[:]:
+        if i in l3:
+            l4.remove(i)
+    llll=" ".join(l4)
+    llll=llll.replace(" ",',') 
+    llll=llll.replace(",,",',')
+    l=llll.split("\n")
+    rows=[]
+    dic={}
+    for i in l:
+        row=i.split(",")
+        rows.append(row)
+        for ii in rows:
+                for each in ii:
+                    if each in dic:
+                        dic[each]=dic[each]+1
+                    else:
+                        dic[each]=1
+    keyword=sorted(dic.items(),key=lambda x:x[1],reverse=True)
+    ci1=[]
+    shu1=[]
+    zongbiao=[]
+    for i in range (6): 
+        word,count=keyword[i]
+        ci1.append(word)
+        shu1.append(count)
+    zongbiao.append(ci1)
+    zongbiao.append(shu1)
+    return zongbiao
+zong=keyw()
+ci2,shu2=zong[0],zong[1]
+ci3=",".join(ci2)
+L1 = T.Label(win, text="关键词:"+ci3, bg='white', font=('Arial', 12), width=60, height=2)
+L1.pack()
