@@ -91,3 +91,9 @@ def tihuan():
      l1[weizhi]=str(b31)
      T.messagebox.showinfo(u'提示',u'替换成功')
 b6=T.Button(win,text=u'单词替换',command=tihuan,width=20,height=1).pack()
+
+def shanchu():
+    b33=T.simpledialog.askstring(u'提示',u'请输入需要删除的单词')
+    l1.remove(str(b33))
+    T.messagebox.showinfo(u'提示',u'删除成功')
+b7=T.Button(win,text=u'删除单词',command=shanchu,width=20,height=1).pack()
